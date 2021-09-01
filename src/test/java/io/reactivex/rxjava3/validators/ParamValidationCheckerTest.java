@@ -921,7 +921,7 @@ public class ParamValidationCheckerTest {
 
     @SuppressWarnings("rawtypes")
     static final class AllFunctionals
-    implements BiFunction, BiConsumer,
+    implements BiFunction, BiConsumer, NullableBiConsumer,
     Predicate, BiPredicate, BooleanSupplier,
     Function3, Function4, Function5, Function6, Function7, Function8, Function9,
     FlowableOnSubscribe, ObservableOnSubscribe, SingleOnSubscribe, MaybeOnSubscribe, CompletableOnSubscribe,
