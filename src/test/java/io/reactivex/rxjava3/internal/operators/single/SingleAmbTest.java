@@ -19,6 +19,7 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import io.reactivex.rxjava3.functions.NullableBiConsumer;
 import org.junit.Test;
 
 import io.reactivex.rxjava3.core.*;
@@ -288,7 +289,7 @@ public class SingleAmbTest extends RxJavaTest {
                     .observeOn(Schedulers.computation()),
                 Single.never()
             )
-            .subscribe(new BiConsumer<Object, Throwable>() {
+            .subscribe(new NullableBiConsumer<Integer, Throwable>() {
                 @Override
                 public void accept(Object v, Throwable e) throws Exception {
                     assertNotNull(v);
@@ -316,7 +317,7 @@ public class SingleAmbTest extends RxJavaTest {
                     .observeOn(Schedulers.computation()),
                 Single.never()
             )
-            .subscribe(new BiConsumer<Object, Throwable>() {
+            .subscribe(new NullableBiConsumer<Object, Throwable>() {
                 @Override
                 public void accept(Object v, Throwable e) throws Exception {
                     assertNull(v);

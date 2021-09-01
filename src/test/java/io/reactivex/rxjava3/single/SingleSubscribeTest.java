@@ -49,7 +49,7 @@ public class SingleSubscribeTest extends RxJavaTest {
     public void biconsumer() {
         final Object[] value = { null, null };
 
-        Single.just(1).subscribe(new BiConsumer<Integer, Throwable>() {
+        Single.just(1).subscribe(new NullableBiConsumer<Integer, Throwable>() {
             @Override
             public void accept(Integer v, Throwable e) throws Exception {
                 value[0] = v;
@@ -67,7 +67,7 @@ public class SingleSubscribeTest extends RxJavaTest {
 
         TestException ex = new TestException();
 
-        Single.error(ex).subscribe(new BiConsumer<Object, Throwable>() {
+        Single.error(ex).subscribe(new NullableBiConsumer<Object, Throwable>() {
             @Override
             public void accept(Object v, Throwable e) throws Exception {
                 value[0] = v;
@@ -99,7 +99,7 @@ public class SingleSubscribeTest extends RxJavaTest {
     public void biConsumerDispose() {
         PublishSubject<Integer> ps = PublishSubject.create();
 
-        Disposable d = ps.single(-99).subscribe(new BiConsumer<Object, Object>() {
+        Disposable d = ps.single(-99).subscribe(new NullableBiConsumer<Integer, Throwable>() {
             @Override
             public void accept(Object t1, Object t2) throws Exception {
 
@@ -176,7 +176,7 @@ public class SingleSubscribeTest extends RxJavaTest {
         List<Throwable> list = TestHelper.trackPluginErrors();
 
         try {
-            Single.just(1).subscribe(new BiConsumer<Integer, Throwable>() {
+            Single.just(1).subscribe(new NullableBiConsumer<Integer, Throwable>() {
                 @Override
                 public void accept(Integer t, Throwable e) throws Exception {
                     throw new TestException();
@@ -235,7 +235,7 @@ public class SingleSubscribeTest extends RxJavaTest {
         final Object[] result = { null, null };
 
         Disposable d = Single.just(1)
-        .subscribe(new BiConsumer<Integer, Throwable>() {
+        .subscribe(new NullableBiConsumer<Integer, Throwable>() {
             @Override
             public void accept(Integer t1, Throwable t2) throws Exception {
                 result[0] = t1;
@@ -253,7 +253,7 @@ public class SingleSubscribeTest extends RxJavaTest {
         final Object[] result = { null, null };
 
         Disposable d = Single.<Integer>error(new IOException())
-        .subscribe(new BiConsumer<Integer, Throwable>() {
+        .subscribe(new NullableBiConsumer<Integer, Throwable>() {
             @Override
             public void accept(Integer t1, Throwable t2) throws Exception {
                 result[0] = t1;
