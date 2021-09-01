@@ -4735,7 +4735,7 @@ public abstract class Single<@Nullable T> implements SingleSource<T> {
     @CheckReturnValue
     @NonNull
     @SchedulerSupport(SchedulerSupport.NONE)
-    public final Disposable subscribe(@NonNull BiConsumer<? super T, ? super Throwable> onCallback) {
+    public final Disposable subscribe(@NonNull BiConsumer<@Nullable? super @Nullable T, @Nullable? super @Nullable Throwable> onCallback) {
         Objects.requireNonNull(onCallback, "onCallback is null");
         BiConsumerSingleObserver<T> observer = new BiConsumerSingleObserver<>(onCallback);
         subscribe(observer);
