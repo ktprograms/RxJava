@@ -113,7 +113,7 @@ import io.reactivex.rxjava3.schedulers.*;
  * @since 2.0
  * @see io.reactivex.rxjava3.observers.DisposableSingleObserver
  */
-public abstract class Single<@Nullable T> implements SingleSource<T> {
+public abstract class Single<@NonNull T> implements SingleSource<T> {
 
     /**
      * Runs multiple {@link SingleSource}s and signals the events of the first one that signals (disposing
@@ -4735,7 +4735,7 @@ public abstract class Single<@Nullable T> implements SingleSource<T> {
     @CheckReturnValue
     @NonNull
     @SchedulerSupport(SchedulerSupport.NONE)
-    public final Disposable subscribe(@NonNull BiConsumer<@Nullable ? super @Nullable T, @Nullable ? super @Nullable Throwable> onCallback) {
+    public final Disposable subscribe(@NonNull NullableBiConsumer<? super T, ? super Throwable> onCallback) {
         Objects.requireNonNull(onCallback, "onCallback is null");
         BiConsumerSingleObserver<T> observer = new BiConsumerSingleObserver<>(onCallback);
         subscribe(observer);
