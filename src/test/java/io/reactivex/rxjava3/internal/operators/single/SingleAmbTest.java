@@ -289,7 +289,7 @@ public class SingleAmbTest extends RxJavaTest {
                     .observeOn(Schedulers.computation()),
                 Single.never()
             )
-            .subscribe(new NullableBiConsumer<Integer, Throwable>() {
+            .subscribe(new NullableBiConsumer<Object, Throwable>() {
                 @Override
                 public void accept(Object v, Throwable e) throws Exception {
                     assertNotNull(v);
