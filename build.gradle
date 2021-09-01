@@ -209,3 +209,7 @@ if (project.hasProperty("releaseMode")) {
     */
   }
 }
+
+mavenPublish {
+    releaseSigningEnabled = false
+}
