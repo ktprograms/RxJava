@@ -21,7 +21,7 @@ import io.reactivex.rxjava3.annotations.NonNull;
  * @param <T2> the second value type
  */
 @FunctionalInterface
-public interface BiConsumer<T1, T2> {
+public interface BiConsumer<@NonNull T1, @NonNull T2> {
 
     /**
      * Performs an operation on the given values.
