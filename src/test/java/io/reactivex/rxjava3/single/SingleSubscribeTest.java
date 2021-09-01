@@ -99,7 +99,7 @@ public class SingleSubscribeTest extends RxJavaTest {
     public void biConsumerDispose() {
         PublishSubject<Integer> ps = PublishSubject.create();
 
-        Disposable d = ps.single(-99).subscribe(new NullableBiConsumer<Integer, Throwable>() {
+        Disposable d = ps.single(-99).subscribe(new NullableBiConsumer<Object, Object>() {
             @Override
             public void accept(Object t1, Object t2) throws Exception {
 
@@ -195,7 +195,7 @@ public class SingleSubscribeTest extends RxJavaTest {
 
         try {
             Single.<Integer>error(new TestException("Outer failure")).subscribe(
-            new BiConsumer<Integer, Throwable>() {
+            new NullableBiConsumer<Integer, Throwable>() {
                 @Override
                 public void accept(Integer a, Throwable t) throws Exception {
                     throw new TestException("Inner failure");
