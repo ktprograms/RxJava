@@ -29,5 +29,5 @@ public interface NullableBiConsumer<@Nullable T1, @Nullable T2> extends BiConsum
      * @param t2 the second value
      * @throws Throwable if the implementation wishes to throw any type of exception
      */
-    void accept(T1 t1, T2 t2) throws Throwable;
+    void accept(@Nullable T1 t1, @Nullable T2 t2) throws Throwable;
 }
